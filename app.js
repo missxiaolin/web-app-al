@@ -1,3 +1,6 @@
+import extend from './extend/index.js'
+App = extend.App
+
 App({
   onLaunch(options) {
     // 第一次打开
