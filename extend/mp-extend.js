@@ -2,6 +2,7 @@
 const life = {
   App: ['onLaunch', 'onShow', 'onHide', 'onError', 'onShareAppMessage', 'onUnhandledRejection'],
   Page: ['preprocess', 'onLoad', 'onShow', 'onReady', 'onHide', 'onUnload', 'onTitleClick', 'onPullDownRefresh', 'onReachBottom', 'onShareAppMessage'],
+  Component: ['preprocess', 'didMount', 'didUpdate', 'didUnmount', 'moved', 'detached', 'error']
 }
 
 // 用于保存所有的拓展生命周期函数
@@ -67,6 +68,14 @@ const _Page = decorate(Page, function (option) {
   option['preprocess'] && option['preprocess'].call(option, option)
 })
 
+const _Component = decorate(Component, function (option) {
+  mixin(option, base.Component)
+  for (const lifeTime of life.Component) {
+    option[lifeTime] = decorate(option[lifeTime], ...lifeMixin.Component[lifeTime])
+  }
+  option['preprocess'] && option['preprocess'].call(option, option)
+})
+
 // 装饰函数
 // 在调用原函数之前调用所有装饰器
 function decorate(f, ...decorators) {
@@ -121,6 +130,7 @@ Object.assign(MpExtend, {
   App: _App,
   Page: _Page,
   warning,
+  Component: _Component,
   tips: true
 })
 
