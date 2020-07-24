@@ -1,5 +1,6 @@
 import extend from './extend/index.js'
 App = extend.App
+Page = extend.Page
 
 App({
   onLaunch(options) {

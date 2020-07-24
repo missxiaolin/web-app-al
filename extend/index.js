@@ -5,5 +5,6 @@ import simplePv from './simple/extend_pv.js'
 mpExtend(simplePv)
 
 export default {
-  App: mpExtend.App
+  App: mpExtend.App,
+  Page: mpExtend.Page
 }
