@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/waitPower/waitPower",
     "pages/index/index"
   ],
   "window": {

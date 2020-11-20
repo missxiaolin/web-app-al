@@ -1,6 +1,6 @@
 let urlConfig = {}
 
-class Request {
+export default class Request {
     constructor(option) {
         let baseConfig = {
             baseUrl: urlConfig.gsUrl
@@ -73,6 +73,3 @@ class Request {
         return this
     }
 }
-
-
-export { Request };
